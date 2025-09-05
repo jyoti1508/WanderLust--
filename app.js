@@ -41,7 +41,7 @@ app.use(express.static(path.join(__dirname, "public")));
 const store = MongoStore.create({
   mongoUrl: dbURL,
   crypto: {
-    secret: process.env.secret,
+    secret: process.env.SECRET,
     touchAfter: 24 * 3600,
   },
 });
@@ -100,10 +100,6 @@ app.use((err, req, res, next) => {
   let { statusCode = 500, message = "Something went wrong" } = err;
   res.render("error.ejs", { message });
   // res.status(statusCode).send(message);
-});
-
-app.get("/", (req, res) => {
-  res.render(app.js);
 });
 
 app.listen(8080, () => {
