@@ -87,6 +87,9 @@ app.use((req, res, next) => {
 //   let newUser = await User.register(fakeUser, "helloworld");
 //   res.send(newUser);
 // });
+mongoose.connection.once("open", () => {
+  console.log("Connected DB:", mongoose.connection.name);
+});
 
 app.use("/listings", listingRouter);
 app.use("/listings/:id/reviews", reviewRouter);

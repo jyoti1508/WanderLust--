@@ -20,7 +20,7 @@ router
       failureFlash: "/login",
       failureFlash: true,
     }),
-    userController.login
+    userController.login,
   );
 router.get("/logout", userController.logout);
 
